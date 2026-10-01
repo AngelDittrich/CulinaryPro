@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Brand palette — WCAG AA on #0F172A (see README for ratios) */
+  --color-ink: #0f172a;
+  --color-coal: #131c33;
+  --color-card: #1a2542;
+  --color-edge: #2c3a5e;
+  --color-ember: #ea580c;
+  --color-ember-soft: #fb923c;
+  --color-ember-deep: #9a3412;
+  --color-leaf: #16a34a;
+  --color-mint: #4ade80;
+  --color-gold: #fbbf24;
+  --color-cream: #fff7ed;
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-steam: steam 3.2s ease-in-out infinite;
+  --animate-scan: scan 2.4s ease-in-out infinite;
+  --animate-haptic: haptic 0.5s linear infinite;
+  --animate-pop: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-rise: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-ring-ping: ring-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  @keyframes steam {
+    0% {
+      opacity: 0;
+      transform: translateY(8px) scaleX(1);
+    }
+    35% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-26px) scaleX(1.4);
+    }
+  }
+  @keyframes scan {
+    0%,
+    100% {
+      top: 8%;
+      opacity: 1;
+    }
+    50% {
+      top: 88%;
+      opacity: 0.75;
+    }
+  }
+  @keyframes haptic {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-2px, 1px) rotate(-1.5deg);
+    }
+    50% {
+      transform: translate(2px, -1px) rotate(1.5deg);
+    }
+    75% {
+      transform: translate(-1px, -1px) rotate(-1deg);
+    }
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes ring-ping {
+    0% {
+      transform: scale(0.7);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-ember);
+  color: #fff;
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--color-ember-soft);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Crisp timer numerals */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Slim dark scrollbars for device screens */
+.slim-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.slim-scroll::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 999px;
+}
+.slim-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Reduced motion: calm everything down */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
